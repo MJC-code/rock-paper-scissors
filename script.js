@@ -48,6 +48,14 @@ function game() {
         if (result.startsWith("You Win")) { playerScore += 1; }
         if (result.startsWith("You Lose")) { computerScore += 1; }
     }
-    console.log(playerScore);
 
+    if (playerScore > computerScore) {
+        console.log("You won the best of 5 rounds of Rock, Paper, Scissors")
+    }
+    else if (computerScore > playerScore) {
+        console.log("The computer won the best of 5 rounds of Rock, Paper, Scissors")
+    } else {
+        console.log("These 5 rounds of Rock, Paper, Scissors ended in a tie.")
+    }
 }
+game()
