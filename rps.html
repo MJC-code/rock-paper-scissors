@@ -8,18 +8,26 @@
     <title>Document</title>
     <script src="./script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Rock, Paper, Scissors</h1>
-    
- <div id = "buttonsContainer">  
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-</div>
-   
+    <h1>How about a nice game of Rock, Paper, Scissors?</h1>
+    <h3>Choose wisely!</h3>
 
+    <div id="buttonsContainer">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+
+   <div id="scoreAndResultsContainer">
+           <div id="scoreBoard"></div>
+    <div id="lastResult"></div>
+    </div>
+    <div id="bottom"><button id="restartButton">Restart game</button></div>
 
 </body>
 

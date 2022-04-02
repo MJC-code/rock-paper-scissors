@@ -27,8 +27,17 @@ scissorsBtn.addEventListener('click', () => {
     result = '';
 });
 
+const restartBtn = document.querySelector('#restartButton')
+restartBtn.addEventListener('click', () => {
+    location.reload()
+})
+restartBtn.setAttribute.st
 
+const scoreBoard = document.querySelector('#scoreBoard');
+scoreBoard.textContent = `Human: ${playerScore}  Computer: ${computerScore}`;
 
+const lastResult = document.querySelector('#lastResult');
+lastResult.textContent = "";
 
 function computerPlay() {
     result = ["Rock", "Paper", "Scissors"];
@@ -37,7 +46,9 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-
+    lastResult.textContent = `You chose ${playerSelection}; I chose ${computerSelection}
+    
+    `
     playerSelection = playerSelection.toUpperCase();
     computerSelection = computerSelection.toUpperCase();
 
@@ -64,6 +75,7 @@ function playRound(playerSelection, computerSelection) {
 function keepScore(result) {
     if (result.startsWith("You Win")) { playerScore += 1; }
     if (result.startsWith("You Lose")) { computerScore += 1; }
+    scoreBoard.textContent = `Human: ${playerScore}  Computer: ${computerScore}`
     roundsPlayed += 1;
     if (roundsPlayed === 5) {
         endGame()
@@ -73,16 +85,21 @@ function keepScore(result) {
 
 function endGame() {
     if (playerScore > computerScore) {
-        console.log("You won the best of 5 rounds of Rock, Paper, Scissors")
+        lastResult.textContent = "Well done human. You won this match!";
     }
     else if (computerScore > playerScore) {
-        console.log("The computer won the best of 5 rounds of Rock, Paper, Scissors")
+        lastResult.textContent = "You lose, human. The computer won this match."
     } else {
-        console.log("These 5 rounds of Rock, Paper, Scissors ended in a tie.")
+        lastResult.textContent = "These 5 rounds of Rock, Paper, Scissors ended in a tie."
+
+
 
     }
 
-    location.reload()
+    lastResult.textContent += " Press the button below to play again"
+playerScore = 0;
+computerScore = 0;
+roundsPlayed = 0;
 }
 
 
