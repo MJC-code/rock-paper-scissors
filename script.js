@@ -1,3 +1,35 @@
+
+let playerScore = 0;
+let computerScore = 0;
+let roundsPlayed = 0;
+
+const rockBtn = document.querySelector('#rock')
+rockBtn.addEventListener('click', () => {
+    let result = playRound('Rock', computerPlay())
+    console.log(result);
+    keepScore(result);
+    result = '';
+});
+
+const paperBtn = document.querySelector('#paper')
+paperBtn.addEventListener('click', () => {
+    let result = playRound('Paper', computerPlay())
+    console.log(result);
+    keepScore(result);
+    result = '';
+});
+
+const scissorsBtn = document.querySelector('#scissors')
+scissorsBtn.addEventListener('click', () => {
+    let result = playRound('Scissors', computerPlay())
+    console.log(result);
+    keepScore(result);
+    result = '';
+});
+
+
+
+
 function computerPlay() {
     result = ["Rock", "Paper", "Scissors"];
     index = Math.floor(Math.random() * 3);
@@ -5,6 +37,7 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
+
     playerSelection = playerSelection.toUpperCase();
     computerSelection = computerSelection.toUpperCase();
 
@@ -28,27 +61,17 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function getPlayerInput() {
-    let result = "BLANK";
-    while (result.toUpperCase() != "ROCK" && result.toUpperCase() != "PAPER" && result.toUpperCase() != "SCISSORS") {
-        result = prompt("Please enter either Rock, Paper or Scissors");
+function keepScore(result) {
+    if (result.startsWith("You Win")) { playerScore += 1; }
+    if (result.startsWith("You Lose")) { computerScore += 1; }
+    roundsPlayed += 1;
+    if (roundsPlayed === 5) {
+        endGame()
     }
-    return result;
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
-        let computerSelection = computerPlay()
-        let playerSelection = getPlayerInput()
-        let result = playRound(playerSelection, computerSelection)
-        console.log(result);
-        if (result.startsWith("You Win")) { playerScore += 1; }
-        if (result.startsWith("You Lose")) { computerScore += 1; }
-    }
-
+function endGame() {
     if (playerScore > computerScore) {
         console.log("You won the best of 5 rounds of Rock, Paper, Scissors")
     }
@@ -56,6 +79,10 @@ function game() {
         console.log("The computer won the best of 5 rounds of Rock, Paper, Scissors")
     } else {
         console.log("These 5 rounds of Rock, Paper, Scissors ended in a tie.")
+
     }
+
+    location.reload()
 }
-game()
+
+
