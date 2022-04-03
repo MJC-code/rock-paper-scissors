@@ -37,7 +37,7 @@ const scoreBoard = document.querySelector('#scoreBoard');
 scoreBoard.textContent = `Human: ${playerScore}  Computer: ${computerScore}`;
 
 const lastResult = document.querySelector('#lastResult');
-lastResult.textContent = "";
+lastResult.textContent = " ";
 
 function computerPlay() {
     result = ["Rock", "Paper", "Scissors"];
@@ -75,8 +75,9 @@ function playRound(playerSelection, computerSelection) {
 function keepScore(result) {
     if (result.startsWith("You Win")) { playerScore += 1; }
     if (result.startsWith("You Lose")) { computerScore += 1; }
-    scoreBoard.textContent = `Human: ${playerScore}  Computer: ${computerScore}`
     roundsPlayed += 1;
+    scoreBoard.textContent = `Human: ${playerScore}  Computer: ${computerScore}
+    Rounds played: ${roundsPlayed}`
     if (roundsPlayed === 5) {
         endGame()
     }
